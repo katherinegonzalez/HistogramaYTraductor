@@ -8,39 +8,52 @@
 # Version: 1.0
 # [20.08.2022]
 # ----------------------------------------------------------------------------------------
-# IMPORTAR MODULOS
-import datetime   # modulo de python para este ejemplo (se usara para mostrar la fecha)
-
 # ----------------------------------------------------------------------------------------
 # VARIABLES GLOBALES Y PRE-CONDICIONES
 # ----------------------------------------------------------------------------------------
 
-# << aqui una explicación concreta >>
+# Variables de entrada: (str) valorConjunto, (int) valorHistograma, (boolean) salir, (boolean) finalizar
+# pre-condiciones: conjuntoValores, cada valor ingresado es string
+#                  Histograma, cada valor ingresado debe ser int
+#                  finalizar = 'no' o finalizar = 'si'
+#                  salir != 'si'
+
+# Variables auxiliares: ([]) conjuntoValores, ([]) histograma, (boolean),([]) maximosLocales, seguirPreguntando
+#
+# Explicación: Si salir es 'si', el programa dejará de ejecutarse.
+#              valorConjunto, representa cada uno de los valores que ingresa el usuario para almacenar en la
+#              lista del conjunto de Valores o señal.
+#              valorHistograma, representa cada uno de los valores que ingresa el usuario para almacenar en la
+#              lista del Histograma.
+#              conjuntoValores, histograma, son las variables auxiliares usadas para formar las listas del
+#              conjunto de valores y el histograma a partir de los datos ingresados por el usuario.
+#              maximosLocales, variable auxiliar para almacenar los máximos locales
+#              finalizar, es una variable usada para saber si el usuario desea a ingresar o no más valores a la
+#              lista del conjunto de valores.
+#              seguirPreguntando, es una variable auxiliar para saber si el programa debe volver a preguntar si:
+#              desea añadir más valores a la lista o si desea salir del programa.
 
 # ----------------------------------------------------------------------------------------
 # POSTCONDICIONES
 # ----------------------------------------------------------------------------------------
 
-# << aqui una explicación concreta >>
+# Salida: Mensaje (string) informando si los máximos locales.
+
+# Si salir == 'si' , fin del programa.
 
 # ----------------------------------------------------------------------------------------
-# PARAMETROS
-# ----------------------------------------------------------------------------------------
-# listar aqui los parámetros
-
-# <<Escriba desde aqui el código del programa...>>
-
 def validarFinalizarInput (mensaje):
     seguirPreguntando = True
     while (seguirPreguntando):
         finalizar = input(mensaje)
         seguirPreguntando = not (finalizar == 'si' or finalizar == 'no')
     return finalizar
+
 def conjuntoDeValores ():
     conjuntoValores = []
     for i in range(10):
-        valor = input('Ingrese el valor ' + str(i + 1) +' del conjunto de datos: ')
-        conjuntoValores.append(valor)
+        valorConjunto = input('Ingrese el valor ' + str(i + 1) +' del conjunto de datos: ')
+        conjuntoValores.append(valorConjunto)
         if i >= 4:
             finalizar = validarFinalizarInput('Desea continuar ingresando valores? si/no:')
             if finalizar == 'no':
@@ -50,8 +63,8 @@ def conjuntoDeValores ():
 def histograma (longitud):
     histograma = []
     for i in range(longitud):
-        valor = input('Ingrese el valor ' + str(i + 1) +' del histograma: ')
-        histograma.append(valor)
+        valorHistograma = input('Ingrese el valor ' + str(i + 1) +' del histograma: ')
+        histograma.append(valorHistograma)
     return histograma
 
 def obtenerMaximosLocales (conjuntoValores, histograma):
