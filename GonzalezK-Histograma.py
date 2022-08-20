@@ -30,10 +30,10 @@ import datetime   # modulo de python para este ejemplo (se usara para mostrar la
 
 # <<Escriba desde aqui el código del programa...>>
 
-def validarFinalizarInput ():
+def validarFinalizarInput (mensaje):
     seguirPreguntando = True
     while (seguirPreguntando):
-        finalizar = input('Desea continuar ingresando valores? si/no: ')
+        finalizar = input(mensaje)
         seguirPreguntando = not (finalizar == 'si' or finalizar == 'no')
     return finalizar
 def conjuntoDeValores ():
@@ -42,7 +42,7 @@ def conjuntoDeValores ():
         valor = input('Ingrese el valor ' + str(i + 1) +' del conjunto de datos: ')
         conjuntoValores.append(valor)
         if i >= 4:
-            finalizar = validarFinalizarInput()
+            finalizar = validarFinalizarInput('Desea continuar ingresando valores? si/no:')
             if finalizar == 'no':
                 return conjuntoValores
     return conjuntoValores
@@ -61,24 +61,34 @@ def obtenerMaximosLocales (conjuntoValores, histograma):
             maximosLocales.append(conjuntoValores[i])
     return maximosLocales
 
+def determinarMaximosLocalesEnHistograma ():
+    print('Ingrese los valores del conjunto de valores/señal, de manera ascendente (mínimo 5 valores y máximo 10).')
 
-print('Ingrese los valores del conjunto de valores/señal, de manera ascendente (mínimo 5 valores y máximo 10).')
+    listaConjuntoValores = conjuntoDeValores()
+    print('Su conjunto de valores es: ', listaConjuntoValores, '\n')
 
-listaConjuntoValores = conjuntoDeValores()
-print('Su conjunto de valores es: ', listaConjuntoValores, '\n')
+    print('Ingrese ahora la frecuencia para cada valor del conjunto de datos en el orden adecuado (Histograma). \n'
+          'Dado que la longitud de la señal/conjunto de datos es ', len(listaConjuntoValores), ',solo puede ingresar',
+          len(listaConjuntoValores), 'valores.')
+    listaHistograma = histograma(len(listaConjuntoValores))
+    print('Su histograma es: ', listaHistograma, '\n \n')
 
-print('Ingrese ahora la frecuencia para cada valor del conjunto de datos en el orden adecuado (Histograma). \n'
-      'Dado que la longitud de la señal/conjunto de datos es ', len(listaConjuntoValores), ',solo puede ingresar',
-      len(listaConjuntoValores), 'valores.')
-listaHistograma = histograma(len(listaConjuntoValores))
-print('Su histograma es: ', listaHistograma, '\n \n')
-
-print('Conjunto de valores: ', listaConjuntoValores)
-print('Histograma: ', listaHistograma)
-print('Los máximos locales son: ', obtenerMaximosLocales(listaConjuntoValores, listaHistograma))
-
+    print('Conjunto de valores: ', listaConjuntoValores)
+    print('Histograma: ', listaHistograma)
+    if len(obtenerMaximosLocales(listaConjuntoValores, listaHistograma)) == 1:
+        print('El máximo local es: ', obtenerMaximosLocales(listaConjuntoValores, listaHistograma))
+    elif len(obtenerMaximosLocales(listaConjuntoValores, listaHistograma)) > 1:
+        print('Los máximos locales son: ', obtenerMaximosLocales(listaConjuntoValores, listaHistograma))
+    else:
+       print('No hay máximos locales')
 
 
+salir = 'no'
+
+while (salir != 'si'):
+    print('\n')
+    determinarMaximosLocalesEnHistograma()
+    salir = validarFinalizarInput('Si desea Finalizar el programa escriba si, de lo contrario escriba no: ')
 
 
 
