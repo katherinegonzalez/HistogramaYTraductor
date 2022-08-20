@@ -13,25 +13,25 @@
 # ----------------------------------------------------------------------------------------
 
 # Variables de entrada: (str) valorConjunto, (int) valorHistograma, (boolean) salir, (boolean) finalizar
-# pre-condiciones: conjuntoValores, cada valor ingresado es string
-#                  Histograma, cada valor ingresado debe ser int
+# pre-condiciones: valorConjunto, cada valor ingresado es string
+#                  valorHistograma, cada valor ingresado debe ser int
 #                  finalizar = 'no' o finalizar = 'si'
 #                  salir != 'si'
 
 # Variables auxiliares: ([]) conjuntoValores, ([]) histograma, (boolean),([]) maximosLocales, seguirPreguntando
 #
 # Explicación: Si salir es 'si', el programa dejará de ejecutarse.
-#              valorConjunto, representa cada uno de los valores que ingresa el usuario para almacenar en la
-#              lista del conjunto de Valores o señal.
-#              valorHistograma, representa cada uno de los valores que ingresa el usuario para almacenar en la
-#              lista del Histograma.
+#              valorConjunto, representa cada uno de los valores de la lista del Conjunto de Valores o Señal
+#              (estos valores son ingresados por el usuario).
+#              valorHistograma, representa cada uno de los valores de la lista del Histograma (estos valores son
+#              ingresados por el usuario).
 #              conjuntoValores, histograma, son las variables auxiliares usadas para formar las listas del
 #              conjunto de valores y el histograma a partir de los datos ingresados por el usuario.
 #              maximosLocales, variable auxiliar para almacenar los máximos locales
 #              finalizar, es una variable usada para saber si el usuario desea a ingresar o no más valores a la
 #              lista del conjunto de valores.
 #              seguirPreguntando, es una variable auxiliar para saber si el programa debe volver a preguntar si:
-#              desea añadir más valores a la lista o si desea salir del programa.
+#              'desea añadir más valores a la lista' o 'si desea salir del programa'.
 
 # ----------------------------------------------------------------------------------------
 # POSTCONDICIONES
