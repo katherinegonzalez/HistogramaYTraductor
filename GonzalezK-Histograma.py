@@ -29,9 +29,6 @@ import datetime   # modulo de python para este ejemplo (se usara para mostrar la
 # listar aqui los parámetros
 
 # <<Escriba desde aqui el código del programa...>>
-def ordenarDatosHistograma (conjuntoValores, listaFrecuencia):
-    print('Método para ordenar')
-
 def conjuntoDeValores ():
     conjuntoValores = []
     for i in range(10):
@@ -50,6 +47,14 @@ def histograma (longitud):
         histograma.append(valor)
     return histograma
 
+def obtenerMaximosLocales (conjuntoValores, histograma):
+    maximosLocales = []
+    for i in range(1, len(histograma) - 1):
+        if histograma[i] > histograma[i-1]:
+            maximosLocales.append(conjuntoValores[i])
+    return maximosLocales
+
+
 print('Ingrese los valores del conjunto de valores/señal, de manera ascendente (mínimo 5 valores y máximo 10).')
 
 listaConjuntoValores = conjuntoDeValores()
@@ -60,6 +65,8 @@ print('Ingrese ahora la frecuencia para cada valor del conjunto de datos en el o
       len(listaConjuntoValores), 'valores.')
 listaHistograma = histograma(len(listaConjuntoValores))
 print('Su histograma es: ', listaHistograma)
+
+print('Losmáximos locales son: ', obtenerMaximosLocales(listaConjuntoValores, listaHistograma))
 
 
 
