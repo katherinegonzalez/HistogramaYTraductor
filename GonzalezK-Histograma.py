@@ -42,9 +42,20 @@
 # Si salir == 'si' , fin del programa.
 
 # ----------------------------------------------------------------------------------------
+
+def validarValorHistograma (mensaje):
+    seguirPreguntando = True
+    while seguirPreguntando:
+        valorHistograma = input(mensaje)
+        if valorHistograma.isdigit():
+            seguirPreguntando = False
+        else:
+            print('El valor debe ser un número entero. Intente nuevamente.')
+    return valorHistograma
+
 def validarFinalizarInput (mensaje):
     seguirPreguntando = True
-    while (seguirPreguntando):
+    while seguirPreguntando:
         finalizar = input(mensaje)
         seguirPreguntando = not (finalizar == 'si' or finalizar == 'no')
     return finalizar
@@ -63,7 +74,7 @@ def conjuntoDeValores ():
 def histograma (longitud):
     histograma = []
     for i in range(longitud):
-        valorHistograma = input('Ingrese el valor ' + str(i + 1) +' del histograma: ')
+        valorHistograma = validarValorHistograma('Ingrese el valor ' + str(i + 1) +' del histograma: ')
         histograma.append(valorHistograma)
     return histograma
 
@@ -81,7 +92,7 @@ def determinarMaximosLocalesEnHistograma ():
     print('Su conjunto de valores es: ', listaConjuntoValores, '\n')
 
     print('Ingrese ahora la frecuencia para cada valor del conjunto de datos en el orden adecuado (Histograma). \n'
-          'Dado que la longitud de la señal/conjunto de datos es ', len(listaConjuntoValores), ',solo puede ingresar',
+          'Dado que la longitud de la señal/conjunto de datos es ', len(listaConjuntoValores), ', solo puede ingresar',
           len(listaConjuntoValores), 'valores.')
     listaHistograma = histograma(len(listaConjuntoValores))
     print('Su histograma es: ', listaHistograma, '\n \n')
