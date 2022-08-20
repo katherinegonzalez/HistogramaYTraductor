@@ -29,14 +29,21 @@ import datetime   # modulo de python para este ejemplo (se usara para mostrar la
 # listar aqui los parámetros
 
 # <<Escriba desde aqui el código del programa...>>
+
+def validarFinalizarInput ():
+    seguirPreguntando = True
+    while (seguirPreguntando):
+        finalizar = input('Desea continuar ingresando valores? si/no: ')
+        seguirPreguntando = not (finalizar == 'si' or finalizar == 'no')
+    return finalizar
 def conjuntoDeValores ():
     conjuntoValores = []
     for i in range(10):
         valor = input('Ingrese el valor ' + str(i + 1) +' del conjunto de datos: ')
         conjuntoValores.append(valor)
         if i >= 4:
-            finalizar = input('Desea continuar ingresando valores? si/no: ')
-            if (finalizar == 'no'):
+            finalizar = validarFinalizarInput()
+            if finalizar == 'no':
                 return conjuntoValores
     return conjuntoValores
 
@@ -58,15 +65,17 @@ def obtenerMaximosLocales (conjuntoValores, histograma):
 print('Ingrese los valores del conjunto de valores/señal, de manera ascendente (mínimo 5 valores y máximo 10).')
 
 listaConjuntoValores = conjuntoDeValores()
-print('Su conjunto de valores es: ', listaConjuntoValores)
+print('Su conjunto de valores es: ', listaConjuntoValores, '\n')
 
 print('Ingrese ahora la frecuencia para cada valor del conjunto de datos en el orden adecuado (Histograma). \n'
       'Dado que la longitud de la señal/conjunto de datos es ', len(listaConjuntoValores), ',solo puede ingresar',
       len(listaConjuntoValores), 'valores.')
 listaHistograma = histograma(len(listaConjuntoValores))
-print('Su histograma es: ', listaHistograma)
+print('Su histograma es: ', listaHistograma, '\n \n')
 
-print('Losmáximos locales son: ', obtenerMaximosLocales(listaConjuntoValores, listaHistograma))
+print('Conjunto de valores: ', listaConjuntoValores)
+print('Histograma: ', listaHistograma)
+print('Los máximos locales son: ', obtenerMaximosLocales(listaConjuntoValores, listaHistograma))
 
 
 
