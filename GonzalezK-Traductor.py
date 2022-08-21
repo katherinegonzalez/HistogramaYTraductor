@@ -1,33 +1,56 @@
 # ----------------------------------------------------------------------------------------
 # PROGRAMA: Traductor
 # ----------------------------------------------------------------------------------------
-# Descripción: <<breve descripción>>
+# Descripción: Este programa traduce los días de la semana de español a inglés o a portugués
+# de acuerdo a la selección del usuario.
 # ----------------------------------------------------------------------------------------
 # Autor: Katherine Xiomar González Santacruz
 # Version: 1.0
 # [20.08.2022]
 # ----------------------------------------------------------------------------------------
-# IMPORTAR MODULOS
-import datetime   # modulo de python para este ejemplo (se usara para mostrar la fecha)
-
 # ----------------------------------------------------------------------------------------
 # VARIABLES GLOBALES Y PRE-CONDICIONES
 # ----------------------------------------------------------------------------------------
 
-# << aqui una explicación concreta >>
+# Variables de entrada: (str) dia, (int) idioma, (str) salir
+# pre-condiciones: dia, idioma, salir son string
+#                  día debe ser: lunes, martes, miércoles, jueves, viernes, sábado, domingo
+#                  idioma debe ser: Inglés, Portugués
+#                  día, idioma: NO hay pre-condiciones para tíldes, mayúsculas o minúsculas
+#                  (el string puede ser como sea)
+#                  salir != 'si'
+#
+
+# Variables auxiliares: (dict) trans, (str) resultadoTraduccion, (bool) seguirPreguntando
+#
+# Explicación: Si salir es 'si', el programa dejará de ejecutarse.
+#              dia, día de la semana ingresado por el usuario
+#              idioma, idioma ingresado por el usuario para hacer la traducción
+#              trans, variable auxiliar para quitarle las tíldes a una cadena
+#              resultadoTraduccion, variable auxiliar para definir el mensaje final a mostrar en pantalla
+#              seguirPreguntando, es una variable auxiliar para saber si el programa debe volver a preguntar
+#              si desea salir del programa.
 
 # ----------------------------------------------------------------------------------------
 # POSTCONDICIONES
 # ----------------------------------------------------------------------------------------
 
-# << aqui una explicación concreta >>
+# Salida: Mensaje (str) con la traducción del día dependiendo del idioma seleccionado.
+#
+# Si el día no es válido: Mensaje (str) informando ésto al usuario
+# Si el idioma no es válido: Mensaje (str) informando ésto al usuario
+# Si salir == 'si' , fin del programa.
 
 # ----------------------------------------------------------------------------------------
-# PARAMETROS
+# PARÁMETROS
 # ----------------------------------------------------------------------------------------
-# listar aqui los parámetros
+# (dict) diasIngles, (dict) diasPortugues
+# Estos son diccionarios que almacenan las traducciones de los días de la semana en inglés y portugués.
 
-# <<Escriba desde aqui el código del programa...>>
+# (str) a,b
+# Son parámetros auxiliares para quitar las tíldes a las cadenas introducidas
+# ----------------------------------------------------------------------------------------
+
 diasIngles = {
     'lunes': 'Monday',
     'martes': 'Tuesday',
@@ -37,6 +60,7 @@ diasIngles = {
     'sabado': 'Saturday',
     'domingo': 'Sunday'
 }
+
 diasPortugues= {
     'lunes': 'Segunda-feira',
     'martes': 'Terça-feira',
@@ -66,7 +90,7 @@ def traducir ():
     mensajeIdiomaInvalido = 'No se encuentran resultados con el idioma introducido'
 
     dia = eliminarTildes(input('Ingrese el día de la semana que desea traducir: '))
-    idioma = eliminarTildes(input('Seleccione el idioma al que desea traducir (Ingles/Portugues): '))
+    idioma = eliminarTildes(input('Seleccione el idioma al que desea traducir (Inglés/Portugués): '))
 
     resultadoTraduccion = traduccion(idioma.lower(), dia.lower(), mensajeDiaInvalido, mensajeIdiomaInvalido)
 
@@ -82,9 +106,10 @@ def validarFinalizarInput (mensaje):
         seguirPreguntando = not (finalizar == 'si' or finalizar == 'no')
     return finalizar
 
+print('Bienvenido al Traductor de días de la semana Español/Inglés - Español/Portugues.')
 salir = 'no'
 while (salir != 'si'):
-    print('Bienvenido al Traductor de días de la semana Español/Inglés - Español/Portugues. \n')
+    print('\n')
     traducir()
     salir = validarFinalizarInput('Si desea Finalizar el programa escriba si, de lo contrario escriba no: ')
 
