@@ -117,12 +117,6 @@ while (salir != 'si'):
     salir = validarFinalizarInput('Si desea Finalizar el programa escriba si, de lo contrario escriba no: ')
 
 
-
-
-
-
-
-
 # ----------------------------------------------------------------------------------------
 # end.
 # ----------------------------------------------------------------------------------------
