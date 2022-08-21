@@ -12,13 +12,14 @@
 # VARIABLES GLOBALES Y PRE-CONDICIONES
 # ----------------------------------------------------------------------------------------
 
-# Variables de entrada: (str) valorConjunto, (int) valorHistograma, (boolean) salir, (boolean) finalizar
+# Variables de entrada: (str) valorConjunto, (int) valorHistograma, (str) salir, (str) finalizar
 # pre-condiciones: valorConjunto, cada valor ingresado es string
 #                  valorHistograma, cada valor ingresado debe ser int
 #                  finalizar = 'no' o finalizar = 'si'
 #                  salir != 'si'
 
-# Variables auxiliares: ([]) conjuntoValores, ([]) histograma, (boolean),([]) maximosLocales, seguirPreguntando
+# Variables auxiliares: (list) conjuntoValores, (list) histograma, (list) maximosLocales,
+#                       (bool) seguirPreguntando
 #
 # Explicación: Si salir es 'si', el programa dejará de ejecutarse.
 #              valorConjunto, representa cada uno de los valores de la lista del Conjunto de Valores o Señal
@@ -30,15 +31,16 @@
 #              maximosLocales, variable auxiliar para almacenar los máximos locales
 #              finalizar, es una variable usada para saber si el usuario desea a ingresar o no más valores a la
 #              lista del conjunto de valores.
-#              seguirPreguntando, es una variable auxiliar para saber si el programa debe volver a preguntar si:
-#              'desea añadir más valores a la lista' o 'si desea salir del programa'.
+#              seguirPreguntando, es una variable auxiliar para saber si el programa debe volver a preguntar si
+#              desea añadir más valores a la lista o si desea salir del programa (dependiendo del caso).
 
 # ----------------------------------------------------------------------------------------
 # POSTCONDICIONES
 # ----------------------------------------------------------------------------------------
 
-# Salida: Mensaje (string) informando si los máximos locales.
+# Salida: Mensaje (str) informando los máximos locales.
 
+# Si valorHistograma no es un número entero positivo, mostrar mensaje en pantalla
 # Si salir == 'si' , fin del programa.
 
 # ----------------------------------------------------------------------------------------
@@ -50,7 +52,7 @@ def validarValorHistograma (mensaje):
         if valorHistograma.isdigit():
             seguirPreguntando = False
         else:
-            print('El valor debe ser un número entero. Intente nuevamente.')
+            print('El valor debe ser un número entero positivo. Intente nuevamente.')
     return valorHistograma
 
 def validarFinalizarInput (mensaje):
