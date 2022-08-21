@@ -67,7 +67,7 @@ def conjuntoDeValores ():
     for i in range(10):
         valorConjunto = input('Ingrese el valor ' + str(i + 1) +' del conjunto de datos: ')
         conjuntoValores.append(valorConjunto)
-        if i >= 4:
+        if i >= 4 and i < 9:
             finalizar = validarFinalizarInput('Desea continuar ingresando valores? si/no:')
             if finalizar == 'no':
                 return conjuntoValores
